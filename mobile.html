@@ -54,8 +54,10 @@
 </head>
 <body class="selection:bg-gaming-accent selection:text-white">
 
-    <!-- full-screen board (natural orientation, fills the screen, stays put) -->
-    <div id="board-wrap" class="fixed inset-0 z-0">
+    <!-- full-screen board (natural orientation, contained, stays put).
+         100dvh keeps it within the live viewport so the browser chrome
+         (URL bar / bottom toolbar) never overlaps the map. -->
+    <div id="board-wrap" class="fixed top-0 left-0 z-0" style="width:100vw; height:100dvh;">
         <div id="board2d" class="absolute inset-0"></div>
     </div>
 

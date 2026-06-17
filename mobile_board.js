@@ -109,8 +109,11 @@ export function createMobileBoard({ container, textureUrl = './board_plancia.jpg
     }
 
     // Blit the landscape board onto the canvas in its NATURAL orientation,
-    // cover-fit. No rotation: the map stays upright and "in place" whichever
-    // way the phone is held — turning the device just re-fits, never spins.
+    // CONTAIN-fit (whole board always visible) and centred, inside a padding
+    // margin with a thin frame. No rotation: the map keeps the same framing
+    // whichever way the phone is held — landscape just shows it bigger, so the
+    // user naturally turns the device to see better. The padding keeps it clear
+    // of the browser chrome (URL bar) and stops the edges being cut off.
     function blit() {
         const dpr = window.devicePixelRatio || 1;
         const cw = container.clientWidth, ch = container.clientHeight;
@@ -120,9 +123,14 @@ export function createMobileBoard({ container, textureUrl = './board_plancia.jpg
         }
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.clearRect(0, 0, cw, ch);
-        const scale = Math.max(cw / OVL_W, ch / OVL_H);   // cover
+        const pad = Math.max(12, Math.round(Math.min(cw, ch) * 0.035));
+        const scale = Math.min((cw - pad * 2) / OVL_W, (ch - pad * 2) / OVL_H);   // contain
         const drawW = OVL_W * scale, drawH = OVL_H * scale;
-        ctx.drawImage(board, (cw - drawW) / 2, (ch - drawH) / 2, drawW, drawH);
+        const ox = Math.round((cw - drawW) / 2), oy = Math.round((ch - drawH) / 2);
+        ctx.drawImage(board, ox, oy, drawW, drawH);
+        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = 'rgba(200, 155, 60, 0.45)';
+        ctx.strokeRect(ox - 0.75, oy - 0.75, drawW + 1.5, drawH + 1.5);
     }
 
     // ── public ops ───────────────────────────────────────────────────────────
