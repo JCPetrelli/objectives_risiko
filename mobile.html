@@ -25,27 +25,28 @@
         h1, h2, h3, .font-display { font-family: 'Cinzel', serif; letter-spacing: 0.02em; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-        .glass-effect { background: rgba(20, 18, 14, 0.86); backdrop-filter: blur(14px);
+        .glass-effect { background: rgba(20, 18, 14, 0.92); backdrop-filter: blur(14px);
                         border: 1px solid rgba(200, 155, 60, 0.18); }
         .neon-gradient-text {
             background: linear-gradient(45deg, #f1d27d 0%, #c89b3c 55%, #8a5d1d 100%);
             -webkit-background-clip: text; background-clip: text; color: transparent;
         }
+
+        /* borderless menu icon — legible over any part of the map */
+        #menu-btn { text-shadow: 0 1px 5px rgba(0,0,0,.95), 0 0 3px rgba(0,0,0,.95); }
+
         /* board card slide animation on swipe / step */
         #board-wrap { transition: transform .18s ease, opacity .18s ease; }
-        #board-wrap.slide-left  { transform: translateX(-18%); opacity: 0; }
-        #board-wrap.slide-right { transform: translateX( 18%); opacity: 0; }
+        #board-wrap.slide-left  { transform: translateX(-14%); opacity: 0; }
+        #board-wrap.slide-right { transform: translateX( 14%); opacity: 0; }
+
+        /* transient objective-name flash on change (no persistent UI) */
+        #obj-toast { transition: opacity .35s ease; }
 
         /* drawer */
         #drawer { transition: transform .25s ease; transform: translateX(-100%); }
         #drawer.open { transform: translateX(0); }
         #scrim { transition: opacity .25s ease; }
-
-        /* bottom panel collapse */
-        #panel-body { transition: max-height .25s ease, opacity .2s ease; max-height: 42vh; overflow-y: auto; }
-        #panel.collapsed #panel-body { max-height: 0; opacity: 0; }
-        #panel.collapsed #panel-chevron { transform: rotate(180deg); }
-        #panel-chevron { transition: transform .25s ease; }
 
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-thumb { background: #96701f; border-radius: 3px; }
@@ -53,45 +54,29 @@
 </head>
 <body class="selection:bg-gaming-accent selection:text-white">
 
-    <!-- full-screen board (rotated 90°, fills height) -->
+    <!-- full-screen board (natural orientation, fills the screen, stays put) -->
     <div id="board-wrap" class="fixed inset-0 z-0">
         <div id="board2d" class="absolute inset-0"></div>
     </div>
 
-    <!-- top bar (translucent, floats over the board) -->
-    <div class="fixed top-0 left-0 right-0 z-20 p-3 flex items-center gap-2"
+    <!-- the ONLY persistent UI: a borderless menu icon, top-left, both orientations -->
+    <button id="menu-btn" aria-label="Menu"
+            class="fixed z-40 w-11 h-11 flex items-center justify-center text-3xl leading-none text-white active:text-gaming-accent"
+            style="top: max(0.4rem, env(safe-area-inset-top)); left: max(0.4rem, env(safe-area-inset-left));">☰</button>
+
+    <!-- transient objective name, flashes briefly on change then fades -->
+    <div id="obj-toast" class="fixed top-0 left-0 right-0 z-10 flex justify-center pt-3 pointer-events-none opacity-0"
          style="padding-top: max(0.75rem, env(safe-area-inset-top));">
-        <button id="menu-btn" aria-label="Menu"
-                class="glass-effect rounded-xl w-11 h-11 flex items-center justify-center text-xl shrink-0 active:bg-white/10">☰</button>
-        <div class="glass-effect rounded-xl px-3 py-2 flex items-center gap-2 min-w-0 flex-1">
-            <span class="text-lg shrink-0">🎯</span>
-            <div class="min-w-0">
-                <div id="obj-name" class="font-bold text-sm leading-tight truncate"></div>
-                <div id="obj-total" class="text-[11px] text-gaming-accent font-mono leading-none mt-0.5"></div>
-            </div>
-        </div>
+        <span class="glass-effect rounded-full pl-3 pr-4 py-1.5 inline-flex items-center gap-2">
+            <span class="text-base">🎯</span>
+            <span id="toast-name" class="font-bold text-sm"></span>
+            <span id="toast-total" class="text-[11px] text-gaming-accent font-mono"></span>
+        </span>
     </div>
 
-    <!-- swipe hint (fades after first interaction) -->
-    <div id="swipe-hint" class="fixed left-0 right-0 z-10 text-center px-6 pointer-events-none"
-         style="top: 4.75rem;">
-        <span class="glass-effect rounded-full px-3 py-1 text-[11px] text-gray-300 inline-flex items-center gap-1"
-              data-i18n="mobile.swipe_hint"></span>
-    </div>
-
-    <!-- bottom breakdown panel -->
-    <div id="panel" class="fixed bottom-0 left-0 right-0 z-20 glass-effect rounded-t-2xl"
-         style="padding-bottom: max(0.5rem, env(safe-area-inset-bottom));">
-        <button id="panel-toggle" class="w-full flex items-center justify-between px-4 pt-3 pb-2">
-            <span class="text-xs uppercase tracking-[0.2em] text-gray-400 font-mono" data-i18n="study.list_title"></span>
-            <span id="panel-chevron" class="text-gaming-accent">▾</span>
-        </button>
-        <div id="panel-body" class="px-4 pb-3 space-y-3 text-sm"></div>
-    </div>
-
-    <!-- drawer + scrim -->
+    <!-- drawer + scrim (opened by the menu icon) -->
     <div id="scrim" class="fixed inset-0 z-30 bg-black/60 opacity-0 pointer-events-none"></div>
-    <aside id="drawer" class="fixed top-0 left-0 bottom-0 z-40 w-[82%] max-w-xs glass-effect flex flex-col"
+    <aside id="drawer" class="fixed top-0 left-0 bottom-0 z-40 w-[86%] max-w-sm glass-effect flex flex-col"
            style="padding-top: max(0.75rem, env(safe-area-inset-top));">
         <div class="px-4 pb-3 flex items-center justify-between border-b border-white/10">
             <h2 class="text-base font-bold neon-gradient-text" data-i18n="landing.title"></h2>
@@ -99,11 +84,22 @@
         </div>
 
         <div class="flex-1 overflow-y-auto px-4 py-3 space-y-5">
+            <!-- current objective: name + total + breakdown -->
+            <div>
+                <div class="flex items-baseline gap-2 mb-2">
+                    <span class="text-lg">🎯</span>
+                    <span id="cur-name" class="font-bold text-lg leading-tight"></span>
+                    <span id="cur-total" class="text-xs text-gaming-accent font-mono ml-auto"></span>
+                </div>
+                <div id="cur-breakdown" class="space-y-3 text-sm"></div>
+            </div>
+
             <!-- view mode -->
             <div>
                 <div class="text-[11px] uppercase tracking-[0.2em] text-gray-400 font-mono mb-2" data-i18n="mobile.viewmode"></div>
                 <div id="viewmode-list" class="grid grid-cols-2 gap-2"></div>
             </div>
+
             <!-- objectives -->
             <div>
                 <div class="text-[11px] uppercase tracking-[0.2em] text-gray-400 font-mono mb-2" data-i18n="mobile.objectives"></div>
@@ -129,7 +125,6 @@
 
         const LOCALES = ['en', 'it'];
         const LANG_KEY = 'risiko_study_locale';
-        // i18n label key for each mobile view mode
         const MODE_LABEL = { standard: 'view_mode_default', clean: 'view_mode_clean',
                              outline: 'view_mode_outline', fill: 'view_mode_fill' };
 
@@ -165,17 +160,11 @@
         document.getElementById('drawer-close').addEventListener('click', closeDrawer);
         scrim.addEventListener('click', closeDrawer);
 
-        // ── bottom panel collapse ────────────────────────────────────────────
-        const panel = document.getElementById('panel');
-        document.getElementById('panel-toggle').addEventListener('click', () => panel.classList.toggle('collapsed'));
-
-        // ── continent label helper (territory names stay Italian) ─────────────
         const continentLabel = (en) => window.t('continent.' + en);
 
-        // ── render the breakdown panel for an objective ──────────────────────
-        function renderPanel(o) {
-            const body = document.getElementById('panel-body');
-            if (!o) { body.innerHTML = ''; return; }
+        // breakdown markup for the current objective (shown inside the drawer)
+        function breakdownHTML(o) {
+            if (!o) return '';
             const pts = window.t('objective.pts');
             let html = '';
             if (o.whole_continents && o.whole_continents.length) {
@@ -204,19 +193,33 @@
                             `</div></div>`).join('') +
                     `</div></div>`;
             }
-            body.innerHTML = html;
+            return html;
         }
 
+        // transient name flash on objective change
+        const toast = document.getElementById('obj-toast');
+        let toastTimer = 0;
+        function flashName(o) {
+            if (!o) return;
+            document.getElementById('toast-name').textContent = o.name;
+            document.getElementById('toast-total').textContent = `${o.total} ${window.t('objective.pts')}`;
+            toast.style.opacity = '1';
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => { toast.style.opacity = '0'; }, 1300);
+        }
+
+        let booted = false;
         function onSelect(o, mode) {
-            // top bar
-            document.getElementById('obj-name').textContent = o ? o.name : '';
-            document.getElementById('obj-total').textContent = o ? `${o.total} ${window.t('objective.pts')}` : '';
-            renderPanel(o);
+            // drawer's current-objective section
+            document.getElementById('cur-name').textContent = o ? o.name : '';
+            document.getElementById('cur-total').textContent = o ? `${o.total} ${window.t('objective.pts')}` : '';
+            document.getElementById('cur-breakdown').innerHTML = breakdownHTML(o);
             // active states in the drawer
             document.querySelectorAll('#obj-list [data-obj]').forEach(el =>
                 el.classList.toggle('bg-gaming-accent/25', o && +el.dataset.obj === o.id));
             document.querySelectorAll('#viewmode-list [data-mode]').forEach(el =>
                 el.classList.toggle('bg-gaming-accent/25', el.dataset.mode === mode));
+            if (booted) flashName(o);   // don't flash the initial auto-selection
         }
 
         // ── boot ──────────────────────────────────────────────────────────────
@@ -232,14 +235,12 @@
             });
             await board.ready;
 
-            // view-mode buttons
             document.getElementById('viewmode-list').innerHTML = MOBILE_VIEW_MODES.map(m => `
                 <button data-mode="${m}" class="glass-effect rounded-lg py-2 text-xs font-medium active:bg-white/10">
                     ${window.t(MODE_LABEL[m])}</button>`).join('');
             document.querySelectorAll('#viewmode-list [data-mode]').forEach(btn =>
                 btn.addEventListener('click', () => board.setViewMode(btn.dataset.mode)));
 
-            // objective list
             document.getElementById('obj-list').innerHTML = board.objectives.map(o => `
                 <button data-obj="${o.id}"
                         class="w-full flex items-center justify-between rounded-lg px-3 py-2 text-left active:bg-white/10">
@@ -249,15 +250,12 @@
             document.querySelectorAll('#obj-list [data-obj]').forEach(btn =>
                 btn.addEventListener('click', () => { board.select(+btn.dataset.obj); closeDrawer(); }));
 
-            // reflect the restored view mode + initial selection
             onSelect(board.getSelected(), board.getViewMode());
+            booted = true;
 
             // ── swipe = flip objectives like cards ────────────────────────────
             const wrap = document.getElementById('board-wrap');
-            const hint = document.getElementById('swipe-hint');
-            let hintShown = true;
-            function flip(dir) {  // dir: +1 next, -1 prev
-                if (hintShown) { hint.style.opacity = '0'; hintShown = false; }
+            function flip(dir) {  // +1 next, -1 prev
                 wrap.classList.add(dir > 0 ? 'slide-left' : 'slide-right');
                 setTimeout(() => {
                     dir > 0 ? board.next() : board.prev();

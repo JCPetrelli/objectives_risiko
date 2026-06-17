@@ -15,14 +15,22 @@ hamburger menu or swipe through them like cards, on a full-screen top-down 2D bo
    auto-redirects phones (`screen width ≤ 820px AND touch`) via `location.replace('mobile.html')`.
    Mobile carries a "Full 3D version →" link to `index.html?desktop=1`; that choice is
    remembered in `localStorage` (`risiko_force_desktop`) so it won't bounce back.
-2. **Orientation** — the landscape board is rotated 90° and scaled to fill the portrait
-   viewport height (cover); top bar + breakdown panel float as translucent glass overlays.
-3. **View modes** (menu-driven, no shortcuts): Standard · Clean · Outlines · Filled.
+2. **Orientation** (revised 2026-06-17) — the board renders in its **natural
+   (north-up) orientation**, cover-fit to fill the screen. It does **not** rotate with the
+   device: turning the phone just re-fits, so the map "stays in place" with no skew or spin.
+   (Superseded the earlier "rotate 90° to fill portrait height" approach, which distorted
+   on orientation change.)
+3. **On-screen UI** (revised 2026-06-17) — the only persistent element is a **borderless ☰
+   icon** in the top-left (no background; legible via text-shadow), present in both
+   orientations. Everything else lives in the drawer it opens. The earlier always-visible
+   top bar and bottom breakdown panel were removed.
+4. **View modes** (menu-driven, no shortcuts): Standard · Clean · Outlines · Filled.
    Dropped the 3D-only Metal and Map-spotlight.
-4. **Objective info** — compact, collapsible breakdown panel: `🎯 <name> — 86 pts`,
-   whole continents (with points), bridge territories (with points).
-5. **Swipe** — left/right on the map = next / previous objective, cyclic 1↔16, with a
-   brief slide animation. Hamburger menu is the jump-to.
+5. **Objective info** — shown **inside the drawer**: `🎯 <name> — <total> pts`, whole
+   continents (with points), bridge territories (with points). A transient name flash
+   (~1.3 s, no persistent UI) appears on the map when the objective changes.
+6. **Swipe** — left/right on the map = next / previous objective, cyclic 1↔16, with a
+   brief slide animation. The ☰ drawer is the jump-to / info surface.
 
 ## Components
 

@@ -108,7 +108,9 @@ export function createMobileBoard({ container, textureUrl = './board_plancia.jpg
         blit();
     }
 
-    // Blit the landscape board onto the portrait canvas, rotated 90° CW, cover-fit.
+    // Blit the landscape board onto the canvas in its NATURAL orientation,
+    // cover-fit. No rotation: the map stays upright and "in place" whichever
+    // way the phone is held — turning the device just re-fits, never spins.
     function blit() {
         const dpr = window.devicePixelRatio || 1;
         const cw = container.clientWidth, ch = container.clientHeight;
@@ -118,18 +120,9 @@ export function createMobileBoard({ container, textureUrl = './board_plancia.jpg
         }
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.clearRect(0, 0, cw, ch);
-        // rotated board is OVL_H wide × OVL_W tall; cover-fit into the viewport
-        const rotW = OVL_H, rotH = OVL_W;
-        const scale = Math.max(cw / rotW, ch / rotH);
-        const drawW = rotW * scale, drawH = rotH * scale;
-        const ox = (cw - drawW) / 2, oy = (ch - drawH) / 2;
-        ctx.save();
-        ctx.translate(ox, oy);
-        ctx.scale(scale, scale);
-        ctx.translate(rotW, 0);          // place origin for a +90° (CW) rotation
-        ctx.rotate(Math.PI / 2);
-        ctx.drawImage(board, 0, 0);
-        ctx.restore();
+        const scale = Math.max(cw / OVL_W, ch / OVL_H);   // cover
+        const drawW = OVL_W * scale, drawH = OVL_H * scale;
+        ctx.drawImage(board, (cw - drawW) / 2, (ch - drawH) / 2, drawW, drawH);
     }
 
     // ── public ops ───────────────────────────────────────────────────────────
@@ -153,10 +146,10 @@ export function createMobileBoard({ container, textureUrl = './board_plancia.jpg
     }
 
     let resizeRAF = 0;
-    window.addEventListener('resize', () => {
-        cancelAnimationFrame(resizeRAF);
-        resizeRAF = requestAnimationFrame(blit);
-    });
+    const refit = () => { cancelAnimationFrame(resizeRAF); resizeRAF = requestAnimationFrame(blit); };
+    window.addEventListener('resize', refit);
+    window.addEventListener('orientationchange', () => setTimeout(refit, 100));
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', refit);
 
     // ── boot ─────────────────────────────────────────────────────────────────
     const ready = (async () => {
