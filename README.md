@@ -1,5 +1,7 @@
 # 🎯 Risiko — Study the 16 Objectives
 
+> 🇮🇹 **Versione italiana più in basso** — [vai all'italiano](#-risiko--studia-i-16-obiettivi).
+
 An interactive 3D board for learning every official **Italian Risiko** tournament
 objective ("obiettivi da torneo") — the whole continents, the bridge territories,
 and the per-territory points that make each objective add up to **86**.
@@ -66,5 +68,77 @@ interfering.
 A fan-made study tool based on the official Risiko tournament objectives.
 Risiko is a trademark of its respective owner; this project is non-commercial,
 unaffiliated, and made for educational purposes.
-</content>
-</invoke>
+
+---
+
+# 🎯 Risiko — Studia i 16 Obiettivi
+
+Una plancia 3D interattiva per imparare tutti gli **obiettivi da torneo** ufficiali
+del **Risiko** italiano — i continenti interi, i territori-ponte e i punti per
+territorio che fanno arrivare ogni obiettivo a **86**.
+
+È un sito **completamente statico**: nessun server, nessuna fase di build, nessuna
+dipendenza da installare. Lo apri nel browser e funziona e basta.
+
+> I nomi dei territori sono in **italiano**, esattamente come stampati sulla plancia
+> ufficiale del gioco.
+
+## ✨ Funzionalità
+
+- **Tavolo 3D** renderizzato con Three.js (caricato da CDN — niente bundler).
+- **16 obiettivi da torneo** — clicca su uno per illuminare i suoi territori sulla
+  plancia; il pannello laterale lo scompone in continenti interi + territori-ponte
+  con i relativi punteggi.
+- **Sei viste della plancia** (premi **M**): Standard · Pulita · Metallo · Mappa in
+  evidenza · Contorni · Contorni pieni.
+- **Camera libera**: trascina per orbitare, scorri per lo zoom, **WASD/frecce** per
+  spostarti, **Q/E** per ruotare, **R** per resettare (doppio **R** per una vista 2D
+  dall'alto).
+- **Bilingue EN / IT**, memorizzato tra una visita e l'altra.
+- Una **scritta scorrevole** in senso orario con i nomi degli obiettivi attorno alla
+  plancia.
+
+## 🖥 Eseguirlo in locale
+
+Poiché la pagina carica i dati con `fetch()` e usa moduli ES, servila tramite un
+piccolo web server invece di aprire il file direttamente:
+
+```bash
+python3 -m http.server 8000
+# poi apri http://localhost:8000/
+```
+
+## 🚀 Pubblicalo gratis su GitHub Pages
+
+1. Fai il fork o il push di questo repository.
+2. **Settings → Pages → Build and deployment → Source: _Deploy from a branch_**,
+   poi scegli il tuo branch e `/ (root)`.
+3. Il sito sarà online su `https://<username>.github.io/<repo>/`.
+
+Tutti i percorsi delle risorse sono **relativi**, quindi funziona anche sotto il
+sotto-percorso `/<repo>/` senza alcuna configurazione. Il file `.nojekyll` incluso
+impedisce a GitHub di interferire con la fase Jekyll.
+
+## 🗂 Struttura del progetto
+
+```
+.
+├── index.html          # pagina autonoma: stile + runtime i18n + landing + montaggio plancia
+├── study_board.js      # tutta l'esperienza 3D (Three.js); carica i JSON qui sotto
+├── data/
+│   ├── board_meta.json # 42 territori: posizioni, adiacenze, continenti, colori, valori
+│   └── objectives.json # i 16 obiettivi, ciascuno diviso in continenti interi + ponti
+├── i18n/
+│   ├── en.json         # stringhe in inglese
+│   └── it.json         # stringhe in italiano
+├── borders/            # maschere PNG dei contorni per territorio + pickmap (per le viste)
+├── board_plancia.jpg   # la texture della mappa dipinta applicata alla plancia 3D
+├── board_bg.jpg        # sfondo atmosferico per la hero della landing
+└── IMPLEMENTATION.md   # note tecniche su come sono costruiti la plancia e i dati
+```
+
+## 📜 Crediti & licenza
+
+Strumento di studio amatoriale basato sugli obiettivi da torneo ufficiali del Risiko.
+Risiko è un marchio registrato dei rispettivi proprietari; questo progetto è non
+commerciale, non ufficiale e realizzato a scopo educativo.
