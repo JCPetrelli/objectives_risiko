@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risiko — Study the 16 Objectives</title>
+    <meta name="description" content="An interactive 3D board to learn every official Italian Risiko tournament objective.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        // ── Tailwind theme (lifted verbatim from the game's base.html) ──────
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: {
+                colors: {
+                    'gaming-dark': '#0c1420', 'gaming-darker': '#070d16',
+                    'gaming-gray': '#1d222c', 'gaming-light': '#2a303c',
+                    'gaming-accent': '#c89b3c', 'gaming-accent-dark': '#96701f',
+                    'gaming-success': '#4e8a57', 'gaming-warning': '#d9930d',
+                    'gaming-danger': '#b03a30', 'gaming-purple': '#7d3344',
+                    'gaming-cyan': '#2e6f6a', 'neon-blue': '#e3b54a',
+                    'neon-purple': '#a8542f', 'neon-green': '#86a96f', 'neon-pink': '#c0573a',
+                },
+                backgroundImage: {
+                    'gaming-gradient': 'radial-gradient(ellipse at 50% 0%, #15202e 0%, #0a111b 60%, #070d16 100%)',
+                    'neon-gradient': 'linear-gradient(45deg, #f1d27d 0%, #c89b3c 55%, #8a5d1d 100%)',
+                },
+                boxShadow: {
+                    'gaming': '0 4px 20px rgba(0, 0, 0, 0.4)',
+                    'gaming-lg': '0 10px 40px rgba(0, 0, 0, 0.5)',
+                },
+                backdropBlur: { 'gaming': '16px' },
+            } }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+        body { font-family: 'Alegreya Sans', sans-serif; }
+        h1, h2, h3, h4, .font-display { font-family: 'Cinzel', serif; letter-spacing: 0.02em; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* Film-grain overlay, keeps flat dark panels from looking sterile. */
+        body::after {
+            content: ''; position: fixed; inset: 0; pointer-events: none;
+            z-index: 9999; opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        /* Risiko board tabletop backdrop for the landing hero. */
+        .board-bg {
+            background-image:
+                radial-gradient(ellipse at center, rgba(0,0,0,0) 35%, rgba(2,4,8,0.6) 100%),
+                linear-gradient(to bottom, rgba(7,10,16,0.5) 0%, rgba(7,10,16,0.72) 100%),
+                url('./board_bg.jpg');
+            background-size: cover; background-position: center; background-repeat: no-repeat;
+        }
+
+        /* Smoked glass with a faint brass edge. */
+        .glass-effect {
+            background: rgba(20, 18, 14, 0.82);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(200, 155, 60, 0.18);
+        }
+
+        .neon-gradient-text {
+            background: linear-gradient(45deg, #f1d27d 0%, #c89b3c 55%, #8a5d1d 100%);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+
+        /* Scrollbars */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #14161a; }
+        ::-webkit-scrollbar-thumb { background: #96701f; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c89b3c; }
+
+        /* Study-board specifics (from the game's study.html) */
+        .nav-key { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.18);
+                   border-radius: 5px; padding: 1px 6px; font-size: 0.65rem; font-family: monospace; }
+        [data-objlist] button.active { outline: 2px solid #f3c54b; }
+
+        @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+        .fade-in { animation: fade-in 0.5s ease-out; }
+        #landing.hide { opacity: 0; pointer-events: none; transition: opacity .5s ease; }
+    </style>
+</head>
+<body class="bg-gaming-gradient min-h-screen text-white selection:bg-gaming-accent selection:text-white">
+
+    <!-- ════════════════ STUDY BOARD (hidden until entered) ════════════════ -->
+    <div id="study-root" class="fixed inset-0 overflow-hidden select-none hidden">
+        <div id="board3d" class="absolute inset-0"></div>
+
+        <!-- Top bar -->
+        <div class="absolute top-0 left-0 right-0 z-20 p-3 flex items-center gap-3">
+            <div class="glass-effect rounded-xl px-4 py-2 flex items-center gap-2">
+                <span class="text-lg">🎯</span>
+                <div>
+                    <div class="font-bold text-sm leading-none" data-i18n="study.title"></div>
+                    <div class="text-[10px] text-gray-400 mt-0.5" data-i18n="study.subtitle"></div>
+                </div>
+            </div>
+            <button onclick="window.study && window.study.recenter()"
+                    class="glass-effect rounded-xl px-3 py-2 text-xs hover:bg-white/10 flex items-center gap-1.5">
+                <span class="text-sm">⌖</span> <span data-i18n="controls.reset"></span>
+            </button>
+            <!-- map navigation help -->
+            <div class="relative group">
+                <button class="glass-effect rounded-xl px-3 py-2 text-xs hover:bg-white/10">⌨ <span data-i18n="controls.title"></span></button>
+                <div class="absolute left-0 top-full mt-2 z-50 hidden group-hover:block">
+                    <div class="glass-effect rounded-lg p-3 w-56 shadow-gaming border border-white/10 space-y-1.5 text-[11px]">
+                        <div class="flex justify-between"><kbd class="nav-key">WASD / ↑↓←→</kbd><span class="text-gray-400" data-i18n="controls.pan"></span></div>
+                        <div class="flex justify-between"><kbd class="nav-key">Q / E</kbd><span class="text-gray-400" data-i18n="controls.rotate"></span></div>
+                        <div class="flex justify-between"><kbd class="nav-key">🖱 <span data-i18n="controls.wheel"></span></kbd><span class="text-gray-400" data-i18n="controls.zoom"></span></div>
+                        <div class="flex justify-between"><kbd class="nav-key">R</kbd><span class="text-gray-400" data-i18n="controls.reset"></span></div>
+                        <div class="flex justify-between"><kbd class="nav-key">R R</kbd><span class="text-gray-400" data-i18n="controls.topdown"></span></div>
+                        <div class="flex justify-between"><kbd class="nav-key">M</kbd><span class="text-gray-400" data-i18n="controls.viewmode"></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ml-auto flex items-center gap-2">
+                <div class="flex gap-1" data-langswitch></div>
+                <button onclick="showLanding()"
+                        class="glass-effect rounded-xl px-3 py-2 text-xs hover:bg-white/10 font-bold">← <span data-i18n="ui.home"></span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════ LANDING HERO ════════════════════════════ -->
+    <div id="landing" class="fixed inset-0 board-bg flex flex-col items-center justify-center px-6 text-center z-30">
+        <div class="absolute top-3 right-3 flex gap-1" data-langswitch></div>
+
+        <div class="max-w-2xl fade-in">
+            <div class="text-xs uppercase tracking-[0.3em] text-gaming-accent/80 mb-4 font-mono" data-i18n="landing.kicker"></div>
+            <h1 class="text-5xl sm:text-6xl font-extrabold mb-5 neon-gradient-text" data-i18n="landing.title"></h1>
+            <p class="text-base sm:text-lg text-gray-300 leading-relaxed mb-8" data-i18n="landing.lead"></p>
+
+            <button onclick="enterBoard()"
+                    class="bg-neon-gradient text-gaming-darker font-bold text-lg px-8 py-3 rounded-xl shadow-gaming-lg hover:scale-[1.03] transition-transform">
+                🎯 <span data-i18n="landing.enter"></span>
+            </button>
+
+            <div class="mt-10 grid sm:grid-cols-3 gap-3 text-xs text-gray-400">
+                <div class="glass-effect rounded-lg px-3 py-2.5"><span class="text-lg block mb-1">🖱</span><span data-i18n="landing.tip_drag"></span></div>
+                <div class="glass-effect rounded-lg px-3 py-2.5"><span class="text-lg block mb-1">✨</span><span data-i18n="landing.tip_pick"></span></div>
+                <div class="glass-effect rounded-lg px-3 py-2.5"><span class="text-lg block mb-1">⌨</span><span data-i18n="landing.tip_modes"></span></div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-4 left-0 right-0 text-[11px] text-gray-500 px-6" data-i18n="landing.footer"></div>
+    </div>
+
+    <!-- ════════════════════════════ SCRIPTS ════════════════════════════ -->
+    <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
+    </script>
+
+    <script type="module">
+        import { createStudyBoard } from './study_board.js';
+
+        const LOCALES = ['en', 'it'];
+        const LANG_KEY = 'risiko_study_locale';
+
+        // ── client-side i18n: load both dictionaries, pick from localStorage ─
+        // Replaces the game's Flask-session language + /api/set_language reload.
+        function currentLocale() {
+            const s = localStorage.getItem(LANG_KEY);
+            return LOCALES.includes(s) ? s : (navigator.language || '').startsWith('it') ? 'it' : 'en';
+        }
+        // Expose the same global API the board expects (window.t / window.I18N).
+        window.t = function (key, params = {}) {
+            let text = (window.I18N && window.I18N[key]) || key;
+            for (const name in params) text = text.replaceAll('{' + name + '}', params[name]);
+            return text;
+        };
+        window.switchLanguage = function (locale) {
+            localStorage.setItem(LANG_KEY, locale);
+            location.reload();   // rebuilds the board's DOM in the new language
+        };
+
+        // Fill every [data-i18n] element + render the language switch buttons.
+        function applyI18n() {
+            document.documentElement.lang = window.LOCALE;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                el.textContent = window.t(el.dataset.i18n);
+            });
+            document.querySelectorAll('[data-langswitch]').forEach(box => {
+                box.innerHTML = LOCALES.map(loc => `
+                    <button onclick="switchLanguage('${loc}')"
+                        class="px-2 py-1 text-[10px] font-bold rounded ${loc === window.LOCALE
+                            ? 'bg-gaming-accent text-white'
+                            : 'bg-gray-700/70 hover:bg-gray-600 text-gray-300'}">${loc.toUpperCase()}</button>`).join('');
+            });
+        }
+
+        // ── landing <-> board navigation (board inits lazily on first enter) ─
+        const landing = document.getElementById('landing');
+        const studyRoot = document.getElementById('study-root');
+        let boardStarted = false;
+
+        window.enterBoard = function () {
+            landing.classList.add('hide');
+            studyRoot.classList.remove('hidden');
+            if (!boardStarted) {
+                boardStarted = true;
+                window.study = createStudyBoard({
+                    container: document.getElementById('board3d'),
+                    textureUrl: './board_plancia.jpg',
+                    dataBase: './data/',
+                    bordersBase: './borders/',
+                    panelTopPx: 64,   // clear the floating top bar
+                });
+            }
+            location.hash = 'board';
+        };
+        window.showLanding = function () {
+            landing.classList.remove('hide');
+            location.hash = '';
+        };
+
+        // ── boot: fetch the chosen locale's dictionary, then render ─────────
+        (async function boot() {
+            window.LOCALE = currentLocale();
+            try {
+                window.I18N = await fetch('./i18n/' + window.LOCALE + '.json').then(r => r.json());
+            } catch { window.I18N = {}; }   // t() falls back to raw keys
+            applyI18n();
+            // Deep link: #board opens the board straight away.
+            if (location.hash === '#board') enterBoard();
+        })();
+    </script>
+</body>
+</html>

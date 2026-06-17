@@ -1,0 +1,526 @@
+{
+"positions": {
+"Alaska": {
+"x": 90,
+"y": 99
+},
+"Territori del Nord O.": {
+"x": 163,
+"y": 103
+},
+"Groenlandia": {
+"x": 285,
+"y": 84
+},
+"Alberta": {
+"x": 117,
+"y": 168
+},
+"Ontario": {
+"x": 187,
+"y": 203
+},
+"Quebec": {
+"x": 245,
+"y": 215
+},
+"Stati Uniti Occ.": {
+"x": 87,
+"y": 224
+},
+"Stati Uniti Orient.": {
+"x": 144,
+"y": 270
+},
+"America Centrale": {
+"x": 77,
+"y": 289
+},
+"Venezuela": {
+"x": 126,
+"y": 355
+},
+"Brasile": {
+"x": 182,
+"y": 412
+},
+"Perù": {
+"x": 107,
+"y": 440
+},
+"Argentina": {
+"x": 120,
+"y": 502
+},
+"Islanda": {
+"x": 382,
+"y": 125
+},
+"Gran Bretagna": {
+"x": 359,
+"y": 204
+},
+"Scandinavia": {
+"x": 429,
+"y": 162
+},
+"Ucraina": {
+"x": 496,
+"y": 222
+},
+"Europa Settentrionale": {
+"x": 425,
+"y": 236
+},
+"Europa Occidentale": {
+"x": 335,
+"y": 285
+},
+"Europa Meridionale": {
+"x": 423,
+"y": 288
+},
+"Africa del Nord": {
+"x": 350,
+"y": 385
+},
+"Egitto": {
+"x": 454,
+"y": 388
+},
+"Africa Orientale": {
+"x": 489,
+"y": 447
+},
+"Congo": {
+"x": 425,
+"y": 472
+},
+"Africa del Sud": {
+"x": 447,
+"y": 533
+},
+"Madagascar": {
+"x": 522,
+"y": 532
+},
+"Urali": {
+"x": 554,
+"y": 186
+},
+"Siberia": {
+"x": 595,
+"y": 162
+},
+"Jacuzia": {
+"x": 646,
+"y": 98
+},
+"Kamchatka": {
+"x": 701,
+"y": 95
+},
+"Cita": {
+"x": 648,
+"y": 171
+},
+"Mongolia": {
+"x": 693,
+"y": 198
+},
+"Giappone": {
+"x": 785,
+"y": 155
+},
+"Afghanistan": {
+"x": 576,
+"y": 249
+},
+"Cina": {
+"x": 700,
+"y": 267
+},
+"Medio Oriente": {
+"x": 550,
+"y": 354
+},
+"India": {
+"x": 647,
+"y": 351
+},
+"Siam": {
+"x": 725,
+"y": 334
+},
+"Indonesia": {
+"x": 776,
+"y": 407
+},
+"Nuova Guinea": {
+"x": 841,
+"y": 443
+},
+"Australia Occidentale": {
+"x": 753,
+"y": 516
+},
+"Australia Orientale": {
+"x": 815,
+"y": 543
+}
+},
+"connections": {
+"Alaska": [
+"Territori del Nord O.",
+"Alberta",
+"Kamchatka"
+],
+"Territori del Nord O.": [
+"Alaska",
+"Alberta",
+"Ontario",
+"Groenlandia"
+],
+"Groenlandia": [
+"Territori del Nord O.",
+"Ontario",
+"Quebec",
+"Islanda"
+],
+"Alberta": [
+"Alaska",
+"Territori del Nord O.",
+"Ontario",
+"Stati Uniti Occ."
+],
+"Ontario": [
+"Territori del Nord O.",
+"Groenlandia",
+"Alberta",
+"Quebec",
+"Stati Uniti Occ.",
+"Stati Uniti Orient."
+],
+"Quebec": [
+"Groenlandia",
+"Ontario",
+"Stati Uniti Orient."
+],
+"Stati Uniti Occ.": [
+"Alberta",
+"Ontario",
+"Stati Uniti Orient.",
+"America Centrale"
+],
+"Stati Uniti Orient.": [
+"Ontario",
+"Quebec",
+"Stati Uniti Occ.",
+"America Centrale"
+],
+"America Centrale": [
+"Stati Uniti Occ.",
+"Stati Uniti Orient.",
+"Venezuela"
+],
+"Venezuela": [
+"America Centrale",
+"Brasile",
+"Perù"
+],
+"Brasile": [
+"Venezuela",
+"Perù",
+"Argentina",
+"Africa del Nord"
+],
+"Perù": [
+"Venezuela",
+"Brasile",
+"Argentina"
+],
+"Argentina": [
+"Brasile",
+"Perù"
+],
+"Islanda": [
+"Groenlandia",
+"Gran Bretagna",
+"Scandinavia"
+],
+"Gran Bretagna": [
+"Islanda",
+"Scandinavia",
+"Europa Settentrionale",
+"Europa Occidentale"
+],
+"Scandinavia": [
+"Islanda",
+"Gran Bretagna",
+"Europa Settentrionale",
+"Ucraina"
+],
+"Ucraina": [
+"Scandinavia",
+"Europa Settentrionale",
+"Europa Meridionale",
+"Urali",
+"Afghanistan",
+"Medio Oriente"
+],
+"Europa Settentrionale": [
+"Gran Bretagna",
+"Scandinavia",
+"Ucraina",
+"Europa Meridionale",
+"Europa Occidentale"
+],
+"Europa Occidentale": [
+"Gran Bretagna",
+"Europa Settentrionale",
+"Europa Meridionale",
+"Africa del Nord"
+],
+"Europa Meridionale": [
+"Europa Settentrionale",
+"Ucraina",
+"Europa Occidentale",
+"Africa del Nord",
+"Egitto",
+"Medio Oriente"
+],
+"Africa del Nord": [
+"Brasile",
+"Europa Occidentale",
+"Europa Meridionale",
+"Egitto",
+"Africa Orientale",
+"Congo"
+],
+"Egitto": [
+"Europa Meridionale",
+"Africa del Nord",
+"Africa Orientale",
+"Medio Oriente"
+],
+"Africa Orientale": [
+"Africa del Nord",
+"Egitto",
+"Congo",
+"Africa del Sud",
+"Madagascar"
+],
+"Congo": [
+"Africa del Nord",
+"Africa Orientale",
+"Africa del Sud"
+],
+"Africa del Sud": [
+"Congo",
+"Africa Orientale",
+"Madagascar"
+],
+"Madagascar": [
+"Africa Orientale",
+"Africa del Sud"
+],
+"Urali": [
+"Ucraina",
+"Siberia",
+"Afghanistan",
+"Cina"
+],
+"Siberia": [
+"Urali",
+"Jacuzia",
+"Cita",
+"Mongolia",
+"Cina"
+],
+"Jacuzia": [
+"Siberia",
+"Cita",
+"Kamchatka"
+],
+"Kamchatka": [
+"Alaska",
+"Jacuzia",
+"Cita",
+"Mongolia",
+"Giappone"
+],
+"Cita": [
+"Siberia",
+"Jacuzia",
+"Kamchatka",
+"Mongolia"
+],
+"Mongolia": [
+"Siberia",
+"Kamchatka",
+"Cita",
+"Cina",
+"Giappone"
+],
+"Giappone": [
+"Kamchatka",
+"Mongolia"
+],
+"Afghanistan": [
+"Ucraina",
+"Urali",
+"Cina",
+"Medio Oriente"
+],
+"Cina": [
+"Urali",
+"Siberia",
+"Mongolia",
+"Afghanistan",
+"India",
+"Siam",
+"Medio Oriente"
+],
+"Medio Oriente": [
+"Ucraina",
+"Europa Meridionale",
+"Egitto",
+"Afghanistan",
+"India",
+"Cina"
+],
+"India": [
+"Cina",
+"Medio Oriente",
+"Siam"
+],
+"Siam": [
+"Cina",
+"India",
+"Indonesia"
+],
+"Indonesia": [
+"Siam",
+"Nuova Guinea",
+"Australia Occidentale"
+],
+"Nuova Guinea": [
+"Indonesia",
+"Australia Occidentale",
+"Australia Orientale"
+],
+"Australia Occidentale": [
+"Indonesia",
+"Nuova Guinea",
+"Australia Orientale"
+],
+"Australia Orientale": [
+"Nuova Guinea",
+"Australia Occidentale"
+]
+},
+"continents": {
+"Alaska": "North America",
+"Territori del Nord O.": "North America",
+"Groenlandia": "North America",
+"Alberta": "North America",
+"Ontario": "North America",
+"Quebec": "North America",
+"Stati Uniti Occ.": "North America",
+"Stati Uniti Orient.": "North America",
+"America Centrale": "North America",
+"Venezuela": "South America",
+"Brasile": "South America",
+"Perù": "South America",
+"Argentina": "South America",
+"Islanda": "Europe",
+"Gran Bretagna": "Europe",
+"Scandinavia": "Europe",
+"Ucraina": "Europe",
+"Europa Settentrionale": "Europe",
+"Europa Occidentale": "Europe",
+"Europa Meridionale": "Europe",
+"Africa del Nord": "Africa",
+"Egitto": "Africa",
+"Africa Orientale": "Africa",
+"Congo": "Africa",
+"Africa del Sud": "Africa",
+"Madagascar": "Africa",
+"Urali": "Asia",
+"Siberia": "Asia",
+"Jacuzia": "Asia",
+"Kamchatka": "Asia",
+"Cita": "Asia",
+"Mongolia": "Asia",
+"Giappone": "Asia",
+"Afghanistan": "Asia",
+"Cina": "Asia",
+"Medio Oriente": "Asia",
+"India": "Asia",
+"Siam": "Asia",
+"Indonesia": "Australia",
+"Nuova Guinea": "Australia",
+"Australia Occidentale": "Australia",
+"Australia Orientale": "Australia"
+},
+"continent_colors": {
+"North America": "#FF8C42",
+"South America": "#4A90E2",
+"Europe": "#9B59B6",
+"Africa": "#8B4513",
+"Asia": "#27AE60",
+"Australia": "#E91E63"
+},
+"continent_bonuses": {
+"North America": 5,
+"South America": 2,
+"Europe": 5,
+"Africa": 3,
+"Asia": 7,
+"Australia": 2
+},
+"territory_values": {
+"Afghanistan": 4,
+"Africa del Nord": 6,
+"Africa del Sud": 3,
+"Africa Orientale": 5,
+"Alaska": 3,
+"Alberta": 4,
+"America Centrale": 3,
+"Argentina": 2,
+"Australia Occidentale": 3,
+"Australia Orientale": 2,
+"Brasile": 4,
+"Cina": 7,
+"Cita": 4,
+"Congo": 3,
+"Egitto": 4,
+"Europa Meridionale": 6,
+"Europa Occidentale": 4,
+"Europa Settentrionale": 5,
+"Giappone": 2,
+"Gran Bretagna": 4,
+"Groenlandia": 4,
+"India": 3,
+"Indonesia": 3,
+"Islanda": 3,
+"Jacuzia": 3,
+"Kamchatka": 5,
+"Madagascar": 2,
+"Medio Oriente": 6,
+"Mongolia": 5,
+"Nuova Guinea": 3,
+"Ontario": 6,
+"Perù": 3,
+"Quebec": 3,
+"Scandinavia": 4,
+"Siam": 3,
+"Siberia": 5,
+"Stati Uniti Occ.": 4,
+"Stati Uniti Orient.": 4,
+"Territori del Nord O.": 4,
+"Ucraina": 6,
+"Urali": 4,
+"Venezuela": 3
+}
+}

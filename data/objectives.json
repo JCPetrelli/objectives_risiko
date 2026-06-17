@@ -1,0 +1,1106 @@
+[
+{
+"id": 1,
+"name": "Il Letto",
+"total": 86,
+"count": 23,
+"territories": [
+"Alaska",
+"Territori del Nord O.",
+"Groenlandia",
+"Alberta",
+"Ontario",
+"Quebec",
+"Stati Uniti Occ.",
+"Stati Uniti Orient.",
+"America Centrale",
+"Venezuela",
+"Brasile",
+"Perù",
+"Argentina",
+"Africa del Nord",
+"Egitto",
+"Congo",
+"Africa Orientale",
+"Medio Oriente",
+"India",
+"Siam",
+"Indonesia",
+"Nuova Guinea",
+"Australia Occidentale"
+],
+"whole_continents": [
+{
+"continent": "North America",
+"value": 35
+},
+{
+"continent": "South America",
+"value": 12
+}
+],
+"bridges": [
+{
+"continent": "Africa",
+"territories": [
+{
+"name": "Africa del Nord",
+"value": 6
+},
+{
+"name": "Egitto",
+"value": 4
+},
+{
+"name": "Congo",
+"value": 3
+},
+{
+"name": "Africa Orientale",
+"value": 5
+}
+]
+},
+{
+"continent": "Asia",
+"territories": [
+{
+"name": "Medio Oriente",
+"value": 6
+},
+{
+"name": "India",
+"value": 3
+},
+{
+"name": "Siam",
+"value": 3
+}
+]
+},
+{
+"continent": "Australia",
+"territories": [
+{
+"name": "Indonesia",
+"value": 3
+},
+{
+"name": "Nuova Guinea",
+"value": 3
+},
+{
+"name": "Australia Occidentale",
+"value": 3
+}
+]
+}
+]
+},
+{
+"id": 2,
+"name": "Elefante del Circo",
+"total": 86,
+"count": 20,
+"territories": [
+"Islanda",
+"Gran Bretagna",
+"Scandinavia",
+"Ucraina",
+"Europa Settentrionale",
+"Europa Occidentale",
+"Europa Meridionale",
+"Africa del Nord",
+"Egitto",
+"Africa Orientale",
+"Congo",
+"Africa del Sud",
+"Madagascar",
+"Groenlandia",
+"Ontario",
+"Quebec",
+"Stati Uniti Orient.",
+"Urali",
+"Afghanistan",
+"Medio Oriente"
+],
+"whole_continents": [
+{
+"continent": "Europe",
+"value": 32
+},
+{
+"continent": "Africa",
+"value": 23
+}
+],
+"bridges": [
+{
+"continent": "North America",
+"territories": [
+{
+"name": "Groenlandia",
+"value": 4
+},
+{
+"name": "Ontario",
+"value": 6
+},
+{
+"name": "Quebec",
+"value": 3
+},
+{
+"name": "Stati Uniti Orient.",
+"value": 4
+}
+]
+},
+{
+"continent": "Asia",
+"territories": [
+{
+"name": "Urali",
+"value": 4
+},
+{
+"name": "Afghanistan",
+"value": 4
+},
+{
+"name": "Medio Oriente",
+"value": 6
+}
+]
+}
+]
+},
+{
+"id": 3,
+"name": "Il Ciclista",
+"total": 86,
+"count": 22,
+"territories": [
+"Islanda",
+"Gran Bretagna",
+"Scandinavia",
+"Ucraina",
+"Europa Settentrionale",
+"Europa Occidentale",
+"Europa Meridionale",
+"Africa del Nord",
+"Egitto",
+"Africa Orientale",
+"Congo",
+"Africa del Sud",
+"Madagascar",
+"Indonesia",
+"Nuova Guinea",
+"Australia Occidentale",
+"Australia Orientale",
+"Urali",
+"Afghanistan",
+"Medio Oriente",
+"India",
+"Siam"
+],
+"whole_continents": [
+{
+"continent": "Europe",
+"value": 32
+},
+{
+"continent": "Africa",
+"value": 23
+},
+{
+"continent": "Australia",
+"value": 11
+}
+],
+"bridges": [
+{
+"continent": "Asia",
+"territories": [
+{
+"name": "Urali",
+"value": 4
+},
+{
+"name": "Afghanistan",
+"value": 4
+},
+{
+"name": "Medio Oriente",
+"value": 6
+},
+{
+"name": "India",
+"value": 3
+},
+{
+"name": "Siam",
+"value": 3
+}
+]
+}
+]
+},
+{
+"id": 4,
+"name": "La Giraffa Ubriaca",
+"total": 86,
+"count": 21,
+"territories": [
+"Alaska",
+"Territori del Nord O.",
+"Groenlandia",
+"Alberta",
+"Ontario",
+"Quebec",
+"Stati Uniti Occ.",
+"Stati Uniti Orient.",
+"America Centrale",
+"Africa del Nord",
+"Egitto",
+"Africa Orientale",
+"Congo",
+"Africa del Sud",
+"Madagascar",
+"Islanda",
+"Gran Bretagna",
+"Scandinavia",
+"Ucraina",
+"Europa Settentrionale",
+"Europa Meridionale"
+],
+"whole_continents": [
+{
+"continent": "North America",
+"value": 35
+},
+{
+"continent": "Africa",
+"value": 23
+}
+],
+"bridges": [
+{
+"continent": "Europe",
+"territories": [
+{
+"name": "Islanda",
+"value": 3
+},
+{
+"name": "Gran Bretagna",
+"value": 4
+},
+{
+"name": "Scandinavia",
+"value": 4
+},
+{
+"name": "Ucraina",
+"value": 6
+},
+{
+"name": "Europa Settentrionale",
+"value": 5
+},
+{
+"name": "Europa Meridionale",
+"value": 6
+}
+]
+}
+]
+},
+{
+"id": 5,
+"name": "Il Granchio",
+"total": 86,
+"count": 22,
+"territories": [
+"Alaska",
+"Territori del Nord O.",
+"Groenlandia",
+"Alberta",
+"Ontario",
+"Quebec",
+"Stati Uniti Occ.",
+"Stati Uniti Orient.",
+"America Centrale",
+"Indonesia",
+"Nuova Guinea",
+"Australia Occidentale",
+"Australia Orientale",
+"Islanda",
+"Scandinavia",
+"Ucraina",
+"Urali",
+"Afghanistan",
+"Medio Oriente",
+"Cina",
+"India",
+"Siam"
+],
+"whole_continents": [
+{
+"continent": "North America",
+"value": 35
+},
+{
+"continent": "Australia",
+"value": 11
+}
+],
+"bridges": [
+{
+"continent": "Europe",
+"territories": [
+{
+"name": "Islanda",
+"value": 3
+},
+{
+"name": "Scandinavia",
+"value": 4
+},
+{
+"name": "Ucraina",
+"value": 6
+}
+]
+},
+{
+"continent": "Asia",
+"territories": [
+{
+"name": "Urali",
+"value": 4
+},
+{
+"name": "Afghanistan",
+"value": 4
+},
+{
+"name": "Medio Oriente",
+"value": 6
+},
+{
+"name": "Cina",
+"value": 7
+},
+{
+"name": "India",
+"value": 3
+},
+{
+"name": "Siam",
+"value": 3
+}
+]
+}
+]
+},
+{
+"id": 6,
+"name": "Formula Uno",
+"total": 86,
+"count": 22,
+"territories": [
+"Venezuela",
+"Brasile",
+"Perù",
+"Argentina",
+"Islanda",
+"Gran Bretagna",
+"Scandinavia",
+"Ucraina",
+"Europa Settentrionale",
+"Europa Occidentale",
+"Europa Meridionale",
+"Indonesia",
+"Nuova Guinea",
+"Australia Occidentale",
+"Australia Orientale",
+"Africa del Nord",
+"Egitto",
+"Africa Orientale",
+"Afghanistan",
+"Medio Oriente",
+"India",
+"Siam"
+],
+"whole_continents": [
+{
+"continent": "South America",
+"value": 12
+},
+{
+"continent": "Europe",
+"value": 32
+},
+{
+"continent": "Australia",
+"value": 11
+}
+],
+"bridges": [
+{
+"continent": "Africa",
+"territories": [
+{
+"name": "Africa del Nord",
+"value": 6
+},
+{
+"name": "Egitto",
+"value": 4
+},
+{
+"name": "Africa Orientale",
+"value": 5
+}
+]
+},
+{
+"continent": "Asia",
+"territories": [
+{
+"name": "Afghanistan",
+"value": 4
+},
+{
+"name": "Medio Oriente",
+"value": 6
+},
+{
+"name": "India",
+"value": 3
+},
+{
+"name": "Siam",
+"value": 3
+}
+]
+}
+]
+},
+{
+"id": 7,
+"name": "La Befana",
+"total": 86,
+"count": 22,
+"territories": [
+"Venezuela",
+"Brasile",
+"Perù",
+"Argentina",
+"Africa del Nord",
+"Egitto",
+"Africa Orientale",
+"Congo",
+"Africa del Sud",
+"Madagascar",
+"Urali",
+"Siberia",
+"Jacuzia",
+"Kamchatka",
+"Cita",
+"Mongolia",
+"Giappone",
+"Afghanistan",
+"Cina",
+"Medio Oriente",
+"India",
+"Siam"
+],
+"whole_continents": [
+{
+"continent": "South America",
+"value": 12
+},
+{
+"continent": "Africa",
+"value": 23
+},
+{
+"continent": "Asia",
+"value": 51
+}
+],
+"bridges": []
+},
+{
+"id": 8,
+"name": "Elvis",
+"total": 86,
+"count": 22,
+"territories": [
+"Alaska",
+"Territori del Nord O.",
+"Groenlandia",
+"Alberta",
+"Ontario",
+"Quebec",
+"Stati Uniti Occ.",
+"Stati Uniti Orient.",
+"America Centrale",
+"Venezuela",
+"Brasile",
+"Perù",
+"Argentina",
+"Islanda",
+"Gran Bretagna",
+"Scandinavia",
+"Ucraina",
+"Europa Settentrionale",
+"Europa Occidentale",
+"Europa Meridionale",
+"Kamchatka",
+"Giappone"
+],
+"whole_continents": [
+{
+"continent": "North America",
+"value": 35
+},
+{
+"continent": "South America",
+"value": 12
+},
+{
+"continent": "Europe",
+"value": 32
+}
+],
+"bridges": [
+{
+"continent": "Asia",
+"territories": [
+{
+"name": "Kamchatka",
+"value": 5
+},
+{
+"name": "Giappone",
+"value": 2
+}
+]
+}
+]
+},
+{
+"id": 9,
+"name": "Dromedario con Mosca",
+"total": 86,
+"count": 20,
+"territories": [
+"Islanda",
+"Gran Bretagna",
+"Scandinavia",
+"Ucraina",
+"Europa Settentrionale",
+"Europa Occidentale",
+"Europa Meridionale",
+"Urali",
+"Siberia",
+"Jacuzia",
+"Kamchatka",
+"Cita",
+"Mongolia",
+"Giappone",
+"Afghanistan",
+"Cina",
+"Medio Oriente",
+"India",
+"Siam",
+"Indonesia"
+],
+"whole_continents": [
+{
+"continent": "Europe",
+"value": 32
+},
+{
+"continent": "Asia",
+"value": 51
+}
+],
+"bridges": [
+{
+"continent": "Australia",
+"territories": [
+{
+"name": "Indonesia",
+"value": 3
+}
+]
+}
+]
+},
+{
+"id": 10,
+"name": "La Piovra",
+"total": 86,
+"count": 21,
+"territories": [
+"Alaska",
+"Territori del Nord O.",
+"Groenlandia",
+"Alberta",
+"Ontario",
+"Quebec",
+"Stati Uniti Occ.",
+"Stati Uniti Orient.",
+"America Centrale",
+"Islanda",
+"Gran Bretagna",
+"Scandinavia",
+"Ucraina",
+"Europa Settentrionale",
+"Europa Occidentale",
+"Europa Meridionale",
+"Urali",
+"Siberia",
+"Jacuzia",
+"Kamchatka",
+"Giappone"
+],
+"whole_continents": [
+{
+"continent": "North America",
+"value": 35
+},
+{
+"continent": "Europe",
+"value": 32
+}
+],
+"bridges": [
+{
+"continent": "Asia",
+"territories": [
+{
+"name": "Urali",
+"value": 4
+},
+{
+"name": "Siberia",
+"value": 5
+},
+{
+"name": "Jacuzia",
+"value": 3
+},
+{
+"name": "Kamchatka",
+"value": 5
+},
+{
+"name": "Giappone",
+"value": 2
+}
+]
+}
+]
+},
+{
+"id": 11,
+"name": "Il Lupo",
+"total": 86,
+"count": 21,
+"territories": [
+"Venezuela",
+"Brasile",
+"Perù",
+"Argentina",
+"Islanda",
+"Gran Bretagna",
+"Scandinavia",
+"Ucraina",
+"Europa Settentrionale",
+"Europa Occidentale",
+"Europa Meridionale",
+"Africa del Nord",
+"Egitto",
+"Africa Orientale",
+"Congo",
+"Africa del Sud",
+"Madagascar",
+"Urali",
+"Siberia",
+"Afghanistan",
+"Medio Oriente"
+],
+"whole_continents": [
+{
+"continent": "South America",
+"value": 12
+},
+{
+"continent": "Europe",
+"value": 32
+},
+{
+"continent": "Africa",
+"value": 23
+}
+],
+"bridges": [
+{
+"continent": "Asia",
+"territories": [
+{
+"name": "Urali",
+"value": 4
+},
+{
+"name": "Siberia",
+"value": 5
+},
+{
+"name": "Afghanistan",
+"value": 4
+},
+{
+"name": "Medio Oriente",
+"value": 6
+}
+]
+}
+]
+},
+{
+"id": 12,
+"name": "Il Tappeto",
+"total": 86,
+"count": 20,
+"territories": [
+"Urali",
+"Siberia",
+"Jacuzia",
+"Kamchatka",
+"Cita",
+"Mongolia",
+"Giappone",
+"Afghanistan",
+"Cina",
+"Medio Oriente",
+"India",
+"Siam",
+"Africa del Nord",
+"Egitto",
+"Africa Orientale",
+"Congo",
+"Africa del Sud",
+"Madagascar",
+"Ucraina",
+"Europa Meridionale"
+],
+"whole_continents": [
+{
+"continent": "Asia",
+"value": 51
+},
+{
+"continent": "Africa",
+"value": 23
+}
+],
+"bridges": [
+{
+"continent": "Europe",
+"territories": [
+{
+"name": "Ucraina",
+"value": 6
+},
+{
+"name": "Europa Meridionale",
+"value": 6
+}
+]
+}
+]
+},
+{
+"id": 13,
+"name": "Guerra Fredda",
+"total": 86,
+"count": 21,
+"territories": [
+"Alaska",
+"Territori del Nord O.",
+"Groenlandia",
+"Alberta",
+"Ontario",
+"Quebec",
+"Stati Uniti Occ.",
+"Stati Uniti Orient.",
+"America Centrale",
+"Urali",
+"Siberia",
+"Jacuzia",
+"Kamchatka",
+"Cita",
+"Mongolia",
+"Giappone",
+"Afghanistan",
+"Cina",
+"Medio Oriente",
+"India",
+"Siam"
+],
+"whole_continents": [
+{
+"continent": "North America",
+"value": 35
+},
+{
+"continent": "Asia",
+"value": 51
+}
+],
+"bridges": []
+},
+{
+"id": 14,
+"name": "Il Motorino",
+"total": 86,
+"count": 23,
+"territories": [
+"Venezuela",
+"Brasile",
+"Perù",
+"Argentina",
+"Africa del Nord",
+"Egitto",
+"Africa Orientale",
+"Congo",
+"Africa del Sud",
+"Madagascar",
+"Indonesia",
+"Nuova Guinea",
+"Australia Occidentale",
+"Australia Orientale",
+"Europa Occidentale",
+"Europa Meridionale",
+"Medio Oriente",
+"India",
+"Siam",
+"Cina",
+"Mongolia",
+"Cita",
+"Giappone"
+],
+"whole_continents": [
+{
+"continent": "South America",
+"value": 12
+},
+{
+"continent": "Africa",
+"value": 23
+},
+{
+"continent": "Australia",
+"value": 11
+}
+],
+"bridges": [
+{
+"continent": "Europe",
+"territories": [
+{
+"name": "Europa Occidentale",
+"value": 4
+},
+{
+"name": "Europa Meridionale",
+"value": 6
+}
+]
+},
+{
+"continent": "Asia",
+"territories": [
+{
+"name": "Medio Oriente",
+"value": 6
+},
+{
+"name": "India",
+"value": 3
+},
+{
+"name": "Siam",
+"value": 3
+},
+{
+"name": "Cina",
+"value": 7
+},
+{
+"name": "Mongolia",
+"value": 5
+},
+{
+"name": "Cita",
+"value": 4
+},
+{
+"name": "Giappone",
+"value": 2
+}
+]
+}
+]
+},
+{
+"id": 15,
+"name": "Aragosta e Pesciolino",
+"total": 86,
+"count": 23,
+"territories": [
+"Urali",
+"Siberia",
+"Jacuzia",
+"Kamchatka",
+"Cita",
+"Mongolia",
+"Giappone",
+"Afghanistan",
+"Cina",
+"Medio Oriente",
+"India",
+"Siam",
+"Indonesia",
+"Nuova Guinea",
+"Australia Occidentale",
+"Australia Orientale",
+"Egitto",
+"Africa Orientale",
+"Madagascar",
+"Africa del Sud",
+"Congo",
+"Alaska",
+"Alberta"
+],
+"whole_continents": [
+{
+"continent": "Asia",
+"value": 51
+},
+{
+"continent": "Australia",
+"value": 11
+}
+],
+"bridges": [
+{
+"continent": "Africa",
+"territories": [
+{
+"name": "Egitto",
+"value": 4
+},
+{
+"name": "Africa Orientale",
+"value": 5
+},
+{
+"name": "Madagascar",
+"value": 2
+},
+{
+"name": "Africa del Sud",
+"value": 3
+},
+{
+"name": "Congo",
+"value": 3
+}
+]
+},
+{
+"continent": "North America",
+"territories": [
+{
+"name": "Alaska",
+"value": 3
+},
+{
+"name": "Alberta",
+"value": 4
+}
+]
+}
+]
+},
+{
+"id": 16,
+"name": "La Locomotiva",
+"total": 86,
+"count": 22,
+"territories": [
+"Alaska",
+"Territori del Nord O.",
+"Groenlandia",
+"Alberta",
+"Ontario",
+"Quebec",
+"Stati Uniti Occ.",
+"Stati Uniti Orient.",
+"America Centrale",
+"Venezuela",
+"Brasile",
+"Perù",
+"Argentina",
+"Africa del Nord",
+"Egitto",
+"Africa Orientale",
+"Congo",
+"Africa del Sud",
+"Madagascar",
+"Europa Occidentale",
+"Europa Meridionale",
+"Ucraina"
+],
+"whole_continents": [
+{
+"continent": "North America",
+"value": 35
+},
+{
+"continent": "South America",
+"value": 12
+},
+{
+"continent": "Africa",
+"value": 23
+}
+],
+"bridges": [
+{
+"continent": "Europe",
+"territories": [
+{
+"name": "Europa Occidentale",
+"value": 4
+},
+{
+"name": "Europa Meridionale",
+"value": 6
+},
+{
+"name": "Ucraina",
+"value": 6
+}
+]
+}
+]
+}
+]
