@@ -59,5 +59,11 @@
   "landing.tip_modes": "Premi M per scorrere le sei viste",
   "landing.footer": "Strumento amatoriale di studio · nomi dei territori in italiano, come nel gioco ufficiale",
   "landing.support": "Offrimi un caffè",
-  "ui.home": "Home"
+  "ui.home": "Home",
+  "mobile.menu": "Menu",
+  "mobile.objectives": "Obiettivi",
+  "mobile.viewmode": "Vista plancia",
+  "mobile.language": "Lingua",
+  "mobile.swipe_hint": "Scorri per cambiare obiettivo · tocca ☰ per scegliere",
+  "mobile.desktop_link": "Versione 3D completa →"
 }

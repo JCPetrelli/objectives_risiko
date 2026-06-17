@@ -23,6 +23,10 @@ Open it in a browser and it just runs.
   **Q/E** to rotate, **R** to reset (double-tap **R** for a top-down 2D view).
 - **Bilingual EN / IT**, remembered across visits.
 - A clockwise **objective-name marquee** framing the board.
+- **Pocket mode for phones** (`mobile.html`) — a stripped-down, Three.js-free 2D
+  board that fills the screen: pick objectives from a hamburger menu or **swipe**
+  through them like cards, switch board views from the menu. Phones are redirected
+  here automatically (with a link back to the full 3D version).
 
 ## 🖥 Run it locally
 
@@ -51,6 +55,8 @@ interfering.
 .
 ├── index.html          # self-contained page: styling + i18n runtime + landing + board mount
 ├── study_board.js      # the whole 3D experience (Three.js); fetches the JSON below
+├── mobile.html         # phone "pocket" version: full-screen 2D board, hamburger + swipe
+├── mobile_board.js     # the lightweight 2D renderer (no Three.js) behind mobile.html
 ├── data/
 │   ├── board_meta.json # 42 territories: positions, adjacency, continents, colours, values
 │   └── objectives.json # the 16 objectives, each split into whole continents + bridges
@@ -97,6 +103,10 @@ dipendenza da installare. Lo apri nel browser e funziona e basta.
 - **Bilingue EN / IT**, memorizzato tra una visita e l'altra.
 - Una **scritta scorrevole** in senso orario con i nomi degli obiettivi attorno alla
   plancia.
+- **Modalità tascabile per telefono** (`mobile.html`) — una plancia 2D semplificata,
+  senza Three.js, che riempie lo schermo: scegli gli obiettivi da un menu a panino o
+  **scorri** tra loro come carte, cambia vista dal menu. I telefoni vengono reindirizzati
+  qui automaticamente (con un link per tornare alla versione 3D completa).
 
 ## 🖥 Eseguirlo in locale
 
@@ -125,6 +135,8 @@ impedisce a GitHub di interferire con la fase Jekyll.
 .
 ├── index.html          # pagina autonoma: stile + runtime i18n + landing + montaggio plancia
 ├── study_board.js      # tutta l'esperienza 3D (Three.js); carica i JSON qui sotto
+├── mobile.html         # versione "tascabile" per telefono: plancia 2D a schermo, menu + swipe
+├── mobile_board.js     # il renderer 2D leggero (senza Three.js) dietro mobile.html
 ├── data/
 │   ├── board_meta.json # 42 territori: posizioni, adiacenze, continenti, colori, valori
 │   └── objectives.json # i 16 obiettivi, ciascuno diviso in continenti interi + ponti

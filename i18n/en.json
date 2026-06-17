@@ -59,5 +59,11 @@
   "landing.tip_modes": "Press M to cycle six board views",
   "landing.footer": "Fan-made study tool · territory names in Italian, as in the official game",
   "landing.support": "Buy me a coffee",
-  "ui.home": "Home"
+  "ui.home": "Home",
+  "mobile.menu": "Menu",
+  "mobile.objectives": "Objectives",
+  "mobile.viewmode": "Board view",
+  "mobile.language": "Language",
+  "mobile.swipe_hint": "Swipe to flip objectives · tap ☰ to choose",
+  "mobile.desktop_link": "Full 3D version →"
 }
